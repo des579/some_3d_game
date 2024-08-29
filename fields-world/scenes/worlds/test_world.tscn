@@ -1,3 +1,28 @@
-[gd_scene format=3 uid="uid://bo600pyjxt8m4"]
+[gd_scene load_steps=4 format=3 uid="uid://bo600pyjxt8m4"]
 
-[node name="Test world" type="Node3D"]
+[ext_resource type="PackedScene" uid="uid://cqb5w53v1l4fi" path="res://scenes/entities/player.tscn" id="1_4sf53"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_35x68"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nt2yt"]
+
+[node name="test world" type="Node3D"]
+
+[node name="simple floor" type="StaticBody3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="simple floor"]
+mesh = SubResource("BoxMesh_35x68")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="simple floor"]
+shape = SubResource("BoxShape3D_nt2yt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.980598, -0.105507, 0.165217, 0, 0.84281, 0.538212, -0.196032, -0.527769, 0.826457, 0, 20.1976, 17.6191)
+
+[node name="player" parent="." instance=ExtResource("1_4sf53")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.70936, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.914916, 0.0596937, -0.399207, -0.0548222, 0.961463, 0.269411, 0.399905, 0.268374, -0.876385, -2.20116, 7.07949, -7.96519)
